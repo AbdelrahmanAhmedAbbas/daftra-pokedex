@@ -56,29 +56,29 @@ const LoadMoreView: React.FC = () => {
 
   if (isLoading && offset === 0) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-green-100 via-green-50 to-teal-100 py-8 px-4">
-        <div className="max-w-7xl mx-auto">
-          <header className="mb-8 text-center">
-            <h1 className="text-4xl font-bold text-gray-800 mb-2">
+      <div className="min-h-screen bg-gradient-to-br from-teal-100 via-emerald-50 to-cyan-100 py-12 px-4">
+        <div className="max-w-6xl mx-auto">
+          <header className="mb-10 text-center">
+            <h1 className="text-4xl font-bold text-gray-800 mb-3">
               ⚡ Pokédex
             </h1>
-            <p className="text-gray-600 mb-4">
+            <p className="text-gray-600 mb-6 text-lg">
               Discover and explore Pokemon with infinite scroll
             </p>
-            <div className="flex justify-center gap-2">
+            <div className="flex justify-center gap-3">
               <a
                 href="/"
-                className="px-4 py-2 bg-white text-gray-700 rounded-lg hover:bg-gray-100 transition-colors font-semibold shadow-md border border-gray-200"
+                className="px-5 py-2.5 bg-white text-gray-700 rounded-lg hover:bg-gray-50 transition-all font-medium shadow-sm border border-gray-200"
               >
                 Page Controls
               </a>
-              <span className="px-4 py-2 bg-gray-800 text-white rounded-lg font-semibold shadow-md">
+              <span className="px-5 py-2.5 bg-gray-900 text-white rounded-lg font-medium shadow-sm">
                 Infinite Scroll
               </span>
             </div>
           </header>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-5 mb-10">
             {Array.from({ length: 8 }).map((_, index) => (
               <SkeletonCard key={index} />
             ))}
@@ -119,28 +119,28 @@ const LoadMoreView: React.FC = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-100 via-purple-50 to-indigo-100 py-8 px-4">
-      <div className="max-w-7xl mx-auto">
-        <header className="mb-8 text-center">
-          <h1 className="text-4xl font-bold text-gray-800 mb-2">⚡ Pokédex</h1>
-          <p className="text-gray-600 mb-4">
+    <div className="min-h-screen bg-gradient-to-br from-teal-100 via-emerald-50 to-cyan-100 py-12 px-4">
+      <div className="max-w-6xl mx-auto">
+        <header className="mb-10 text-center">
+          <h1 className="text-4xl font-bold text-gray-800 mb-3">⚡ Pokédex</h1>
+          <p className="text-gray-600 mb-6 text-lg">
             Discover and explore Pokemon with infinite scroll
           </p>
-          <div className="flex justify-center gap-2">
+          <div className="flex justify-center gap-3">
             <a
               href="/"
-              className="px-4 py-2 bg-white text-gray-700 rounded-lg hover:bg-gray-100 transition-colors font-semibold shadow-md border border-gray-200"
+              className="px-5 py-2.5 bg-white text-gray-700 rounded-lg hover:bg-gray-50 transition-all font-medium shadow-sm border border-gray-200"
             >
               Page Controls
             </a>
-            <span className="px-4 py-2 bg-gray-800 text-white rounded-lg font-semibold shadow-md">
+            <span className="px-5 py-2.5 bg-gray-900 text-white rounded-lg font-medium shadow-sm">
               Infinite Scroll
             </span>
           </div>
         </header>
 
-        {/* Pokemon Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-8">
+        {/* Pokemon Grid - 4 columns matching the design */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-5 mb-10">
           {pokemonList.map((pokemon) => (
             <PokemonCard key={pokemon.id} pokemon={pokemon} />
           ))}
@@ -148,7 +148,7 @@ const LoadMoreView: React.FC = () => {
 
         {/* Loading More Skeleton Cards */}
         {isFetching && offset > 0 && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-5 mb-10">
             {Array.from({ length: 4 }).map((_, index) => (
               <SkeletonCard key={`loading-${index}`} />
             ))}

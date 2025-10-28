@@ -1,7 +1,7 @@
 import { render, screen, waitFor, fireEvent } from '@testing-library/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { BrowserRouter } from 'react-router-dom';
-import PaginationView from './PaginationView';
+import PaginationView from './';
 import * as pokemonService from '../../services/pokemon.service';
 
 // Mock the pokemon service

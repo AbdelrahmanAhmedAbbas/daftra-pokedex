@@ -1,7 +1,7 @@
 import { render, screen, waitFor, fireEvent } from '@testing-library/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import PokemonDetail from './PokemonDetail';
+import PokemonDetail from './';
 import * as pokemonService from '../../services/pokemon.service';
 
 jest.mock('../../services/pokemon.service');
@@ -40,10 +40,31 @@ describe('PokemonDetail', () => {
     name: 'pikachu',
     height: 4,
     weight: 60,
+    base_experience: 112,
     types: [
       {
         slot: 1,
         type: { name: 'electric', url: 'https://pokeapi.co/api/v2/type/13/' },
+      },
+    ],
+    stats: [
+      { base_stat: 35, effort: 0, stat: { name: 'hp', url: '' } },
+      { base_stat: 55, effort: 0, stat: { name: 'attack', url: '' } },
+      { base_stat: 40, effort: 0, stat: { name: 'defense', url: '' } },
+      { base_stat: 50, effort: 0, stat: { name: 'special-attack', url: '' } },
+      { base_stat: 50, effort: 0, stat: { name: 'special-defense', url: '' } },
+      { base_stat: 90, effort: 0, stat: { name: 'speed', url: '' } },
+    ],
+    abilities: [
+      {
+        is_hidden: false,
+        slot: 1,
+        ability: { name: 'static', url: '' },
+      },
+      {
+        is_hidden: true,
+        slot: 3,
+        ability: { name: 'lightning-rod', url: '' },
       },
     ],
     sprites: {

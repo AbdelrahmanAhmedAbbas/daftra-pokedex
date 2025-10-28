@@ -7,45 +7,7 @@ const PokemonDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const pokemonId = parseInt(id || '0', 10);
 
-  const { data: pokemon, isLoading, isError, error, refetch } = usePokemonDetail(pokemonId);
-
-  if (isLoading) {
-    return (
-      <div className="flex items-center justify-center min-h-screen bg-gray-50">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-500 mx-auto mb-4"></div>
-          <p className="text-gray-600 text-lg">Loading Pokémon...</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (isError || !pokemon) {
-    return (
-      <div className="flex items-center justify-center min-h-screen bg-gray-50">
-        <div className="text-center max-w-md p-6 bg-red-50 rounded-lg border border-red-200">
-          <h2 className="text-2xl font-bold text-red-600 mb-2">Error</h2>
-          <p className="text-gray-700 mb-4">
-            {error?.message || 'Failed to load Pokémon'}
-          </p>
-          <div className="flex gap-4 justify-center">
-            <button
-              onClick={() => refetch()}
-              className="px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
-            >
-              Retry
-            </button>
-            <Link
-              to="/"
-              className="px-6 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors"
-            >
-              Back to List
-            </Link>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  const { data: pokemon } = usePokemonDetail(pokemonId);
 
   const formatId = (id: number): string => {
     return `#${id.toString().padStart(3, '0')}`;

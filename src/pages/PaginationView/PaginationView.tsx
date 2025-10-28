@@ -22,10 +22,7 @@ const PaginationView: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const offset = (currentPage - 1) * ITEMS_PER_PAGE;
 
-  const { data, isLoading, isError, error, refetch } = usePokemonList(
-    ITEMS_PER_PAGE,
-    offset
-  );
+  const { data } = usePokemonList(ITEMS_PER_PAGE, offset);
 
   const handlePreviousPage = () => {
     setCurrentPage((prev) => Math.max(prev - 1, 1));
@@ -38,60 +35,6 @@ const PaginationView: React.FC = () => {
   const handlePageClick = (page: number) => {
     setCurrentPage(page);
   };
-
-  if (isLoading) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-teal-100 via-emerald-50 to-cyan-100 py-12 px-4">
-        <div className="max-w-6xl mx-auto">
-          <header className="mb-10 text-center">
-            <h1 className="text-4xl font-bold text-gray-800 mb-3">
-              ⚡ Pokédex
-            </h1>
-            <p className="text-gray-600 mb-6 text-lg">
-              Discover and explore Pokemon with page controls
-            </p>
-            <div className="flex justify-center gap-3">
-              <span className="px-5 py-2.5 bg-gray-900 text-white rounded-lg font-medium shadow-sm">
-                Page Controls
-              </span>
-              <a
-                href="/load-more"
-                className="px-5 py-2.5 bg-white text-gray-700 rounded-lg hover:bg-gray-50 transition-all font-medium shadow-sm border border-gray-200"
-              >
-                Infinite Scroll
-              </a>
-            </div>
-          </header>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-5 mb-10">
-            {Array.from({ length: 8 }).map((_, index) => (
-              <SkeletonCard key={index} />
-            ))}
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  if (isError) {
-    return (
-      <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-red-50 via-pink-50 to-orange-50">
-        <div className="text-center max-w-md p-8 bg-white rounded-xl shadow-xl border border-red-200">
-          <div className="text-6xl mb-4">⚠️</div>
-          <h2 className="text-3xl font-bold text-red-600 mb-3">Oops!</h2>
-          <p className="text-gray-700 mb-6 text-lg">
-            {error?.message || "Failed to load Pokémon"}
-          </p>
-          <button
-            onClick={() => refetch()}
-            className="px-8 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors font-semibold shadow-md"
-          >
-            Try Again
-          </button>
-        </div>
-      </div>
-    );
-  }
 
   const pokemonList: PokemonCardData[] =
     data?.results.map((pokemon) => ({

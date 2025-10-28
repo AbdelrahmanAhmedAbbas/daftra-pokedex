@@ -29,17 +29,17 @@ const PokemonCard: React.FC<PokemonCardProps> = ({ pokemon }) => {
           <img
             src={sprite || defaultSprite}
             alt={name}
-            className="w-32 h-32 object-contain transform group-hover:scale-110 transition-transform duration-300"
+            className="w-48 h-48 object-contain transform group-hover:scale-110 transition-transform duration-300"
             loading="lazy"
           />
         </div>
         <div className="text-center w-full">
-          <p className="text-sm text-gray-500 font-semibold mb-1">
-            {formatId(id)}
-          </p>
-          <h3 className="text-lg font-bold text-gray-800 capitalize group-hover:text-blue-600 transition-colors duration-300">
+          <h3 className="text-lg font-bold text-gray-800 capitalize group-hover:text-blue-600 transition-colors duration-300 mb-1">
             {capitalizeName(name)}
           </h3>
+          <p className="text-sm text-gray-500 font-semibold">
+            {formatId(id)}
+          </p>
         </div>
       </div>
     </Link>

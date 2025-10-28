@@ -112,7 +112,7 @@ const LoadMoreView: React.FC = () => {
     (pokemon: PokemonListItem) => ({
       id: extractPokemonId(pokemon.url),
       name: pokemon.name,
-      sprite: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${extractPokemonId(
+      sprite: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${extractPokemonId(
         pokemon.url
       )}.png`,
     })

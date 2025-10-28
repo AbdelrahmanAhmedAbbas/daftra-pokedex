@@ -97,7 +97,7 @@ const PaginationView: React.FC = () => {
     data?.results.map((pokemon) => ({
       id: extractPokemonId(pokemon.url),
       name: pokemon.name,
-      sprite: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${extractPokemonId(
+      sprite: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${extractPokemonId(
         pokemon.url
       )}.png`,
     })) || [];

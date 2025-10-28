@@ -112,7 +112,7 @@ const PokemonDetail: React.FC = () => {
                 <img
                   src={sprite}
                   alt={capitalizeName(pokemon.name)}
-                  className="w-full h-auto max-w-sm mx-auto object-contain"
+                  className="w-full h-auto max-w-md mx-auto object-contain"
                 />
               </div>
             </div>

@@ -2,6 +2,7 @@ import { useParams, Link } from 'react-router-dom';
 import { usePokemonDetail } from '../../hooks/usePokemonDetail';
 import { LuWeight } from "react-icons/lu";
 import { CiRuler } from "react-icons/ci";
+import { getPokemonSpriteUrl, getDefaultSpriteUrl } from '../../utils/pokemonFormatters';
 
 const PokemonDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -63,10 +64,8 @@ const PokemonDetail: React.FC = () => {
     return names[stat] || stat;
   };
 
-  const sprite =
-    pokemon.sprites.other?.['official-artwork']?.front_default ||
-    pokemon.sprites.front_default ||
-    'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/0.png';
+  // Use pokemon.com CDN instead of GitHub raw URLs to avoid rate limiting
+  const sprite = getPokemonSpriteUrl(pokemon.id) || getDefaultSpriteUrl();
 
   // Get primary type for header gradient
   const primaryType = pokemon.types[0]?.type.name || 'normal';

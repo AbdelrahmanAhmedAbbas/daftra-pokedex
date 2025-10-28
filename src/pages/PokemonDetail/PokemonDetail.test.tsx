@@ -196,7 +196,7 @@ describe('PokemonDetail', () => {
     });
   });
 
-  it('should display official artwork if available', async () => {
+  it('should display pokemon image from pokemon.com CDN', async () => {
     (pokemonService.fetchPokemonById as jest.Mock).mockResolvedValue(mockPokemon);
 
     renderWithProviders(<PokemonDetail />);
@@ -205,29 +205,7 @@ describe('PokemonDetail', () => {
       const image = screen.getByAltText('Pikachu');
       expect(image).toHaveAttribute(
         'src',
-        'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png'
-      );
-    });
-  });
-
-  it('should fallback to front_default sprite if no official artwork', async () => {
-    const pokemonNoArtwork = {
-      ...mockPokemon,
-      sprites: {
-        ...mockPokemon.sprites,
-        other: undefined,
-      },
-    };
-
-    (pokemonService.fetchPokemonById as jest.Mock).mockResolvedValue(pokemonNoArtwork);
-
-    renderWithProviders(<PokemonDetail />);
-
-    await waitFor(() => {
-      const image = screen.getByAltText('Pikachu');
-      expect(image).toHaveAttribute(
-        'src',
-        'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png'
+        'https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png'
       );
     });
   });

@@ -2,6 +2,8 @@
 
 A small, production-style React app that explores the PokéAPI with two list experiences (pagination and infinite scroll) and a detail view. The focus is on solid data fetching with React Query, clear error handling, accessible UI, and maintainable TypeScript.
 
+**🔗 Live Demo:** [https://daftra-pokedex.vercel.app/](https://daftra-pokedex.vercel.app/)
+
 ---
 
 ### What’s inside
